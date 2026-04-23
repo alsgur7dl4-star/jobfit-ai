@@ -217,3 +217,7 @@ __marimo__/
 ai_context/PROJECT_STATE.md
 ai_context/TASKS.md
 ai_context/WORK_LOG.md
+
+# Google Drive temp files
+.tmp.driveupload/
+**/.tmp.driveupload/
