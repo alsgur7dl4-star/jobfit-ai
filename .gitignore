@@ -1,0 +1,8 @@
+Set-Content .gitignore @"
+.vscode/
+.idea/
+backend/.venv/
+frontend/node_modules/
+backend/.env
+frontend/.env
+"@
