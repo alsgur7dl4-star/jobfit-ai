@@ -3,45 +3,21 @@
 
  -->
 
- # API_SPEC
 
-## Auth
+---
+
+## 네 프로젝트용 예시
+
+```md
+# API_SPEC
+
+## 인증
+
 ### POST /auth/signup
-- request:
-  - email
-  - password
-  - name
-- response:
-  - id
-  - email
-  - name
-
-### POST /auth/login
-- request:
-  - email
-  - password
-- response:
-  - access_token
-  - token_type
-
-## Posts
-### GET /posts
-- query:
-  - page
-  - size
-  - keyword
-- response:
-  - items
-  - total_count
-  - page
-  - size
-
-### POST /posts
-- request:
-  - title
-  - content
-- response:
-  - id
-  - title
-  - content
-  - created_at
+#### 요청
+```json
+{
+  "email": "string",
+  "password": "string",
+  "name": "string"
+}
