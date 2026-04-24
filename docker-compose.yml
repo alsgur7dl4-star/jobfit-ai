@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: jobfit_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jobfit_user
+      POSTGRES_PASSWORD: jobfit_password_change_me
+      POSTGRES_DB: jobfit_db
+      TZ: Asia/Seoul
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jobfit_user -d jobfit_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    name: jobfit_postgres_data

@@ -2,8 +2,11 @@
 FastAPI 앱 진입점
 """
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
+from sqlalchemy import text
+from sqlalchemy.orm import Session
 
+from app.core.database import get_db
 from app.core.config import settings
 
 
@@ -28,3 +31,10 @@ def root():
 def health_check():
     """헬스 체크 엔드포인트"""
     return {"status": "healthy"}
+
+
+@app.get("/health/db")
+def health_check_db(db: Session = Depends(get_db)):
+    """헬스 체크 — DB 연결 여부"""
+    result = db.execute(text("SELECT 1")).scalar()
+    return {"status": "healthy" if result == 1 else "unhealthy", "db": "connected"}
